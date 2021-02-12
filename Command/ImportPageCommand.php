@@ -13,7 +13,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ImportPagesCommand extends Command
+class ImportPageCommand extends Command
 {
     const PAGE_PATH = 'pages/';
     const PAGE_CONTENT_PATH = self::PAGE_PATH . 'contents/';
