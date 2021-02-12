@@ -24,7 +24,7 @@
   "autoload": {
     "files": [ "registration.php" ],
     "psr-4": {
-      "DNAFactory\\DataSeeder": ""
+      "DNAFactory\\DataSeeder\\": ""
     }
   }
 }
