@@ -1,7 +1,7 @@
 {
   "name": "dnafactory/module-dataseeder",
   "type": "magento2-module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This module helps you to save and import some of magento 2 entities (such as Blocks, Pages, Configurations and Email).",
   "license": [
   ],
