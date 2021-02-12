@@ -84,7 +84,7 @@ class ImportConfigCommand extends Command
         $baseConfig = include $fileConfigPath . self::FILE_EXT;
         $configs = array_merge($configs, $baseConfig);
 
-        $environmentConfig = include $fileConfigPath . $this->input->getArgument('environment') . self::FILE_EXT;
+        $environmentConfig = include $fileConfigPath . '.' . $this->input->getArgument('environment') . self::FILE_EXT;
         $configs = array_merge($configs, $environmentConfig);
 
         return $configs;
