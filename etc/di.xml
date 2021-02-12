@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="dnafactory_dataseeder_command_importbasesetupconfig" xsi:type="object">DNAFactory\DataSeeder\Command\ImportConfigCommand</item>
+                <item name="dnafactory_dataseeder_command_importemailcommand" xsi:type="object">DNAFactory\DataSeeder\Command\ImportEmailCommand</item>
+                <item name="dnafactory_dataseeder_command_importblockcommand" xsi:type="object">DNAFactory\DataSeeder\Command\ImportBlockCommand</item>
+                <item name="dnafactory_dataseeder_command_importpagecommand" xsi:type="object">DNAFactory\DataSeeder\Command\ImportPageCommand</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
