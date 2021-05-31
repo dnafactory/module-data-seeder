@@ -28,7 +28,7 @@ class FetchAssetContent
         DirectoryList $directoryList,
         DirectoryReaderFactory $directoryReaderFactory
     ) {
-        $this->rootPath = $directoryList->getRoot() . self::ASSETS_FOLDER;
+        $this->rootPath = $directoryList->getRoot() . "/" . self::ASSETS_FOLDER;
         $this->directoryReader = $directoryReaderFactory->create($this->rootPath);
     }
 

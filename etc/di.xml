@@ -10,4 +10,8 @@
             </argument>
         </arguments>
     </type>
+    <preference for="DNAFactory\DataSeeder\Api\ImportBlockManagementInterface" type="DNAFactory\DataSeeder\Management\Import\BlockManagement" />
+    <preference for="DNAFactory\DataSeeder\Api\ImportPageManagementInterface" type="DNAFactory\DataSeeder\Management\Import\PageManagement" />
+    <preference for="DNAFactory\DataSeeder\Api\ImportConfigManagementInterface" type="DNAFactory\DataSeeder\Management\Import\ConfigManagement" />
+    <preference for="DNAFactory\DataSeeder\Api\ImportEmailManagementInterface" type="DNAFactory\DataSeeder\Management\Import\EmailManagement" />
 </config>
