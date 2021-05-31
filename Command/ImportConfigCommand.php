@@ -1,49 +1,25 @@
 <?php
 namespace DNAFactory\DataSeeder\Command;
 
-use DNAFactory\DataSeeder\Asset\FetchAssetContent;
-use Magento\Framework\App\Config\Storage\WriterInterface;
-use Magento\Framework\Module\Dir\Reader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use DNAFactory\DataSeeder\Api\ImportConfigManagementInterface;
 
 class ImportConfigCommand extends Command
 {
-    const FILE_EXT = ".php";
-
     /**
-     * @var Reader
+     * @var ImportConfigManagementInterface
      */
-    protected $directoryReader;
-    /**
-     * @var WriterInterface
-     */
-    protected $configWriter;
-    /**
-     * @var InputInterface
-     */
-    protected $input;
-    /**
-     * @var OutputInterface
-     */
-    protected $output;
-    /**
-     * @var FetchAssetContent
-     */
-    private $fetchAssetContent;
+    protected $importConfigManagement;
 
     public function __construct(
-        FetchAssetContent $fetchAssetContent,
-        Reader $directoryReader,
-        WriterInterface $configWriter,
+        ImportConfigManagementInterface $importConfigManagement,
         string $name = null
     ) {
-        $this->directoryReader = $directoryReader;
-        $this->configWriter = $configWriter;
         parent::__construct($name);
-        $this->fetchAssetContent = $fetchAssetContent;
+        $this->importConfigManagement = $importConfigManagement;
     }
 
     protected function configure()
@@ -59,34 +35,9 @@ class ImportConfigCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->input = $input;
-        $this->output = $output;
-
-        $configs = $this->getConfigs($input->getArgument('config-filename'));
-
-        foreach ($configs as $config) {
-            $this->configWriter->save(
-                $config['path'],
-                $config['value'],
-                $config['scope'],
-                $config['scope_id']
-            );
-
-            $output->writeln(sprintf("Imported %s => %s", $config['path'], $config['value']));
-        }
-    }
-
-    protected function getConfigs($filename)
-    {
-        $configs = [];
-        $fileConfigPath = $this->fetchAssetContent->getConfigsPath() . $filename;
-
-        $baseConfig = include $fileConfigPath . self::FILE_EXT;
-        $configs = array_merge($configs, $baseConfig);
-
-        $environmentConfig = include $fileConfigPath . '.' . $this->input->getArgument('environment') . self::FILE_EXT;
-        $configs = array_merge($configs, $environmentConfig);
-
-        return $configs;
+        $filename = $input->getArgument('config-filename');
+        $environment = $input->getArgument('environment');
+        
+        $this->importConfigManagement->import($filename, $environment);
     }
 }
