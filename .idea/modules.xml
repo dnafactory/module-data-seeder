@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DNAFactory_DataSeeder.iml" filepath="$PROJECT_DIR$/.idea/DNAFactory_DataSeeder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/module-data-seeder.iml" filepath="$PROJECT_DIR$/.idea/module-data-seeder.iml" />
     </modules>
   </component>
 </project>
